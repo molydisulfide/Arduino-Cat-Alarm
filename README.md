@@ -2,17 +2,21 @@
 
 This is a homemade IoT distraction system for my cat Louie. 
 
-Louie is a real pest in the morning when he hasn't yet had his breakfast. This device plays the sound of birds singing in another room when a button is pressed on a website hosted by an ESP2866 server connected to an Arduino reading off the audio file off an SD card. 
+Louie is a real pest in the morning if he hasn't yet had his breakfast. This device plays the sound of birds singing in another room when a button is pressed on a website hosted by an ESP8266 server which trips an Arduino playing the audio file off an SD card. 
 
-Both the Arduino and the ESP2866 board are powered with a 5 V battery, making the device fully wireless, and allowing it to be placed in arbitray parts of the home.
+Both the Arduino and the ESP8266 board are powered with a breadboard-compatible power supply module connected to either a battery or power bank, making the device fully wireless, and allowing it to be placed in arbitray parts of the home.
 
-The repo contains the hardware wiring diagram, a sketch which runs on the ESP2866, and a sketch that runs on the Arduino.
+This repo contains:
+
+* the hardware wiring diagram and I/O tables which show how to connect the two boards together so that the output of the ESP trips the audio playback on the Arduino. It also shows the wiring of a single-BJT amplifier which makes the small 8 <img src="https://render.githubusercontent.com/render/math?math=\Omega"> speaker a little bit louder,
+* an *.ino* sketch which runs on the ESP8266 to establish a Wi-Fi connection and to create a digital HIGH response to an HTML button,
+* an *.ino* sketch that runs on the Arduino to play the audio file off the SD card. The file is a down-converted mono 8-bit *.wav* file, sampled at 16 kHz (an unsigned 8-bit pulse-code modulation (PCM) format).
 
 Server IP is: *192.168.0.140*.
 
 _______
 
-## SD Card Module connections:
+## SD Card Module Connections:
 
 
 | **SD Card Module** | **Arduino** |
@@ -41,6 +45,7 @@ _______
 | Positive input on speaker      | 10 <img src="https://render.githubusercontent.com/render/math?math=\Omega"> resistor           |
 | 10 <img src="https://render.githubusercontent.com/render/math?math=\Omega"> resistor           | Positive rail on breadboard    |
 
+*Note:* The BJT does get quite hot and the speaker is not terribly loud... good enough for a prototype, but for optimal performance need a better speaker/amplifier.
 
 ## Arduino-ESP8266 Trip Wire:
 
@@ -48,7 +53,7 @@ _______
 |:------:|:-------:|
 |#3 | #D3 |
 
-## Power supply (tbd.):
+## Power Supply (tbc.):
 
 | **Boards** | **Power Supply Module on Breadboard**|
 |:------:|:------:|
