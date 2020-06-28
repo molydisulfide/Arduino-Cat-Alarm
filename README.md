@@ -28,7 +28,8 @@ ____________
 ## Single-Transistor Speaker Amplifier: 
 
 _________
-
+| **Start Point**                | **End Point** |
+|:-------:|:------:|
 | GND on Arduino                 | Negative rail on breadboard    |
 | 5 V supply on Arduino          | Positive rail on breadboard    |
 | #9 (sound signal) on Arduino   | 1 k$\Omega$ resistor           |
@@ -41,7 +42,6 @@ _________
 | **Collector** of NPN P2222 BJT | Negative input on speaker      |
 | Positive input on speaker      | 10 $\Omega$ resistor           |
 | 10 $\Omega$ resistor           | Positive rail on breadboard    |
-|                                |                                |
 
 
 
