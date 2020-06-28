@@ -34,7 +34,7 @@ _________
 | 5 V supply on Arduino          | Positive rail on breadboard    |
 | #9 (sound signal) on Arduino   | 1 k<img src="https://render.githubusercontent.com/render/math?math=\Omega"> resistor           |
 | 1 k<img src="https://render.githubusercontent.com/render/math?math=\Omega"> resistor           | **Base** of NPN P2222 BJT      |
-| **Base** of NPN P2222 BJT      | 100 k<img src="https://render.githubusercontent.com/render/math?math=\Omega">resistor         |
+| **Base** of NPN P2222 BJT      | 100 k<img src="https://render.githubusercontent.com/render/math?math=\Omega"> resistor         |
 | 100 k<img src="https://render.githubusercontent.com/render/math?math=\Omega"> resistor         | **Emitter** of NPN P2222 BJT   |
 | **Emitter** of NPN P2222 BJT   | Negative rail on breadboard    |
 | **Base** of NPN P2222 BJT      | 100 k<img src="https://render.githubusercontent.com/render/math?math=\Omega"> resistor         |
@@ -53,11 +53,13 @@ _________
 |:------:|:-------:|
 |#3 | #D3 |
 
-## Power supply:
+## Power supply (tbd.):
 
-Vin pin on ESP -> 5 V rail from Elegoo Power Supply Module
-GND pin on ESP -> GND rail from Elegoo Power Supply Module
-Vin pin on Arduino -> 5 V rail from Elegoo Power Supply Module
-GND pin on Arduino -> GND rail from Elegoo Power Supply Module
+| **Boards** | **Power Supply Module on Breadboard**|
+|:------:|:------:|
+|V<sub>in</sub> pin on ESP| 5 V rail from Elegoo Power Supply Module|
+|GND pin on ESP| GND rail from Elegoo Power Supply Module|
+|V<sub>in</sub> pin on Arduino| 5 V rail from Elegoo Power Supply Module|
+|GND pin on Arduino| GND rail from Elegoo Power Supply Module|
 
 
