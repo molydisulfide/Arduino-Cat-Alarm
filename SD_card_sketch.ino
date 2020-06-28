@@ -45,13 +45,18 @@ void loop() {
   // This loop checks for digital input on pin #3 and trips the audio file on loop on from the SD card://  
 
   val = digitalRead(trip_pin); // read the input pin.
-  
-  if(val > 0)
+  Serial.println(val);
+  if(val == 1)
     {
       Serial.println("Signal has tripped.");
       Serial.println(val); // print the read-out value to the Serial Monitor.
       audio.pause();
-            
-      return;
+      delay(3000);
+      
+      
+    } else if(val == 0){
+   
+      audio.play("birdo.wav");}
     }
-}
+    
+   
