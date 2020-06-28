@@ -8,7 +8,7 @@ Both the Arduino and the ESP2866 board are powered with a 5 V battery, making th
 
 The repo contains the hardware wiring diagram, a sketch which runs on the ESP2866, and a sketch that runs on the Arduino.
 
-Server IP is: 192.168.0.140.
+Server IP is: *192.168.0.140*.
 
 _______
 
@@ -29,7 +29,19 @@ ____________
 
 _________
 
-
+| GND on Arduino                 | Negative rail on breadboard    |
+| 5 V supply on Arduino          | Positive rail on breadboard    |
+| #9 (sound signal) on Arduino   | 1 k$\Omega$ resistor           |
+| 1 k$\Omega$ resistor           | **Base** of NPN P2222 BJT      |
+| **Base** of NPN P2222 BJT      | 100 k$\Omega$ resistor         |
+| 100 k$\Omega$ resistor         | **Emitter** of NPN P2222 BJT   |
+| **Emitter** of NPN P2222 BJT   | Negative rail on breadboard    |
+| **Base** of NPN P2222 BJT      | 100 k$\Omega$ resistor         |
+| 100 k$\Omega$ resistor         | **Collector** of NPN P2222 BJT |
+| **Collector** of NPN P2222 BJT | Negative input on speaker      |
+| Positive input on speaker      | 10 $\Omega$ resistor           |
+| 10 $\Omega$ resistor           | Positive rail on breadboard    |
+|                                |                                |
 
 
 
