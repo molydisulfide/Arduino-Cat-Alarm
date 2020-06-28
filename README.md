@@ -9,3 +9,40 @@ Both the Arduino and the ESP2866 board are powered with a 5 V battery, making th
 The repo contains the hardware wiring diagram, a sketch which runs on the ESP2866, and a sketch that runs on the Arduino.
 
 Server IP is: 192.168.0.140.
+
+SD Card Module:
+
+GND (SD) - GND (Arduino)
++5 (SD) - 5V (Arduino)
+CS (SD) - #10 (Arduino)
+MOSI (SD) - #11 (Arduino)
+SCK (SD) - #13 (Arduino)
+MISO (SD) - #12 (Arduino)
+
+Speaker Amplifier: 
+
+GND on Arduino -> GND rail on breadboard
+5 V supply on Arduino -> positive rail on breadboard
+#9 (sound signal on Arduino) -> 1kOhm resistor
+1kOhm resistor -> Base of NPN P2222 BJT
+Base of NPN P2222 BJT -> 100kOhm resistor
+100 kOhm resistor -> Emitter of NPN P2222 BJT
+Emitter of NPN P222 BJT -> GND rail on breadboard
+Base of NPN P2222 BJT -> 100 kOhm resistor 
+100kOhm resistor -> Collector of NPN P2222 BJT
+Collector of NPN P2222 BJT -> negative input on the speaker
+positive input on the speaker -> 10 Ohm resistor
+10 Ohm resistor -> positive rail on breadboard
+
+Arduino-ESP8266 Trip Wire:
+
+#3 (Arduino) -> #D3 on ESP8266
+
+Power supply:
+
+Vin pin on ESP -> 5 V rail from Elegoo Power Supply Module
+GND pin on ESP -> GND rail from Elegoo Power Supply Module
+Vin pin on Arduino -> 5 V rail from Elegoo Power Supply Module
+GND pin on Arduino -> GND rail from Elegoo Power Supply Module
+
+
