@@ -10,7 +10,9 @@ The repo contains the hardware wiring diagram, a sketch which runs on the ESP286
 
 Server IP is: 192.168.0.140.
 
-SD Card Module connections:
+_______
+
+## SD Card Module connections:
 
 ____________
 
@@ -23,7 +25,7 @@ ____________
 |       SCK      |   #13   |
 |      MISO      |   #12   |
 
-Single-Transistor Speaker Amplifier: 
+## Single-Transistor Speaker Amplifier: 
 
 _________
 
@@ -31,7 +33,7 @@ _________
 
 
 
-Arduino-ESP8266 Trip Wire:
+## Arduino-ESP8266 Trip Wire:
 
 _________
 
@@ -39,7 +41,7 @@ _________
 |:------:|:-------:|
 |#3 | #D3 |
 
-Power supply:
+## Power supply:
 
 Vin pin on ESP -> 5 V rail from Elegoo Power Supply Module
 GND pin on ESP -> GND rail from Elegoo Power Supply Module
