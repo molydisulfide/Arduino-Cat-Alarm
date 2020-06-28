@@ -32,7 +32,7 @@ _________
 |:-------:|:------:|
 | GND on Arduino                 | Negative rail on breadboard    |
 | 5 V supply on Arduino          | Positive rail on breadboard    |
-| #9 (sound signal) on Arduino   | 1 k$\Omega$ resistor           |
+| #9 (sound signal) on Arduino   | 1 k<img src="https://render.githubusercontent.com/render/math?math=Omega"> resistor           |
 | 1 k$\Omega$ resistor           | **Base** of NPN P2222 BJT      |
 | **Base** of NPN P2222 BJT      | 100 k$\Omega$ resistor         |
 | 100 k$\Omega$ resistor         | **Emitter** of NPN P2222 BJT   |
