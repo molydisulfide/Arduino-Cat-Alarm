@@ -23,24 +23,21 @@ ____________
 |       SCK      |   #13   |
 |      MISO      |   #12   |
 
-Speaker Amplifier: 
+Single-Transistor Speaker Amplifier: 
 
-GND on Arduino -> GND rail on breadboard
-5 V supply on Arduino -> positive rail on breadboard
-#9 (sound signal on Arduino) -> 1kOhm resistor
-1kOhm resistor -> Base of NPN P2222 BJT
-Base of NPN P2222 BJT -> 100kOhm resistor
-100 kOhm resistor -> Emitter of NPN P2222 BJT
-Emitter of NPN P222 BJT -> GND rail on breadboard
-Base of NPN P2222 BJT -> 100 kOhm resistor 
-100kOhm resistor -> Collector of NPN P2222 BJT
-Collector of NPN P2222 BJT -> negative input on the speaker
-positive input on the speaker -> 10 Ohm resistor
-10 Ohm resistor -> positive rail on breadboard
+_________
+
+
+
+
 
 Arduino-ESP8266 Trip Wire:
 
-#3 (Arduino) -> #D3 on ESP8266
+_________
+
+| **Arduino** | **ESP8266**| 
+|:------:|:-------:|
+|#3 | #D3 |
 
 Power supply:
 
