@@ -51,8 +51,7 @@ void loop() {
       Serial.println("Signal has tripped.");
       Serial.println(val); // print the read-out value to the Serial Monitor.
       audio.pause();
-      delay(2000);
-      
+            
       return;
     }
 }
