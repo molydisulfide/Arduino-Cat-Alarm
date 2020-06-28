@@ -10,14 +10,18 @@ The repo contains the hardware wiring diagram, a sketch which runs on the ESP286
 
 Server IP is: 192.168.0.140.
 
-SD Card Module:
+SD Card Module connections:
 
-GND (SD) - GND (Arduino)
-+5 (SD) - 5V (Arduino)
-CS (SD) - #10 (Arduino)
-MOSI (SD) - #11 (Arduino)
-SCK (SD) - #13 (Arduino)
-MISO (SD) - #12 (Arduino)
+____________
+
+| **SD Card Module** | **Arduino** |
+|:--------------:|:-------:|
+|       GND      |   GND   |
+|       + 5      |   5 V   |
+|       CS       |   #10   |
+|      MOSI      |   #11   |
+|       SCK      |   #13   |
+|      MISO      |   #12   |
 
 Speaker Amplifier: 
 
