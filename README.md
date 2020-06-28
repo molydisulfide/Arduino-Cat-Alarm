@@ -14,7 +14,6 @@ _______
 
 ## SD Card Module connections:
 
-____________
 
 | **SD Card Module** | **Arduino** |
 |:--------------:|:-------:|
@@ -27,7 +26,6 @@ ____________
 
 ## Single-Transistor Speaker Amplifier: 
 
-_________
 | **Start Point**                | **End Point** |
 |:-------:|:------:|
 | GND on Arduino                 | Negative rail on breadboard    |
@@ -44,10 +42,7 @@ _________
 | 10 <img src="https://render.githubusercontent.com/render/math?math=\Omega"> resistor           | Positive rail on breadboard    |
 
 
-
 ## Arduino-ESP8266 Trip Wire:
-
-_________
 
 | **Arduino** | **ESP8266**| 
 |:------:|:-------:|
