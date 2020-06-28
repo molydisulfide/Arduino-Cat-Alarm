@@ -57,4 +57,8 @@ _______
 |V<sub>in</sub> pin on Arduino| 5 V rail from Elegoo Power Supply Module|
 |GND pin on Arduino| GND rail from Elegoo Power Supply Module|
 
+## Visual Routing Schematic:
+
+![](https://raw.github.com/molydisulfide/Arduino-Cat-Alarm/master/images/routing.jpg?raw=true )
+
 
