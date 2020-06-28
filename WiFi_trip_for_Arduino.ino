@@ -1,14 +1,32 @@
 #include<ESP8266WiFi.h>
-#include "secrets.h"
 
-WiFiClient  client;
+WiFiServer server(80); // Set web server port number to 80.
+// Variable to store the HTTP request
+
+
+// Auxiliar variables to store the current output state
+String output26State = "off";
+
+// Assign output variables to GPIO pins
+const int output26 = 26;
+const int output27 = 27;
+
+// Current time
+unsigned long currentTime = millis();
+// Previous time
+unsigned long previousTime = 0; 
+// Define timeout time in milliseconds (example: 2000ms = 2s)
+const long timeoutTime = 2000;
+String header; // Variable to store the HTTP request.
 
 char ssid[] = "Guzman";
 char password[] = "M4rk_H3rsam";
 
 // Note: GPIO pins on the ESP2866 can draw a maximum current of 12 mA. //
 
-int trip = D5; // This is the pin on the ESP that will be used as a trip signal to play the file off the SD on the Arduino. //
+int trip = 0; // This is the D3 pin on the ESP that will be used as a trip signal 
+              // to play the file off the SD on the Arduino. 
+              // The pinout mapping is weird on the NodeMCU — the D3 pin is "0". 
 
 void setup() {
   
@@ -33,72 +51,98 @@ void setup() {
   Serial.print("IP address:\t");
   Serial.println(WiFi.localIP()); 
 
+// ESP server functionality: //
+
+  
+  server.begin();                  // Start server.
+  Serial.println("HTTP server started!"); // Print status of the server to the Serial Monitor.
+  
 // Initialize the trip pin to the LOW (0) state: //
 
-  pinmode(trip, OUTPUT);
+  pinMode(trip, OUTPUT);
   digitalWrite(trip, LOW);
 }
 
 void loop() {
 
-// ESP listens to incoming clients, stores the incoming data and prints to the Serial Monitor: //
+ WiFiClient client = server.available();
+ if (client) {                             // If a new client connects,
+    currentTime = millis();
+    previousTime = currentTime;
+    Serial.println("New Client.");          // print a message out in the serial port
+    String currentLine = "";                // make a String to hold incoming data from the client
+    while (client.connected() && currentTime - previousTime <= timeoutTime) {  // loop while the client's connected
+      currentTime = millis();
+      if (client.available()) {             // if there's bytes to read from the client,
+        char c = client.read();             // read a byte, then
+        Serial.write(c);                    // print it out the serial monitor
+        header += c;
+        if (c == '\n') {                    // if the byte is a newline character
+          // if the current line is blank, you got two newline characters in a row.
+          // that's the end of the client HTTP request, so send a response:
+          if (currentLine.length() == 0) {
+            // HTTP headers always start with a response code (e.g. HTTP/1.1 200 OK)
+            // and a content-type so the client knows what's coming, then a blank line:
+            client.println("HTTP/1.1 200 OK");
+            client.println("Content-type:text/html");
+            client.println("Connection: close");
+            client.println();
+            
+            // turns the GPIOs on and off
+            if (header.indexOf("GET /0/on") >= 0) {
+              Serial.println("GPIO trip on");
+              output26State = "on";
+              digitalWrite(trip, HIGH);
+            } else if (header.indexOf("GET /0/off") >= 0) {
+              Serial.println("GPIO trip off");
+              output26State = "off";
+              digitalWrite(trip, LOW);
+            } 
+            
+            // Display the HTML web page
+            client.println("<!DOCTYPE html><html>");
+            client.println("<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
+            client.println("<link rel=\"icon\" href=\"data:,\">");
+            // CSS to style the on/off buttons 
+            // Feel free to change the background-color and font-size attributes to fit your preferences
+            client.println("<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}");
+            client.println(".button { background-color: #4CAF50; border: none; color: white; padding: 16px 40px;");
+            client.println("text-decoration: none; font-size: 30px; margin: 2px; cursor: pointer;}");
+            client.println(".button2 {background-color: #555555;}</style></head>");
+            
+            // Web Page Heading
+            client.println("<body><h1>Louie's Wi-Fi Arduino Alarm</h1>");
+            
+            // Display current state, and ON/OFF buttons for GPIO 26  
+            client.println("<p>Play Birds for Louie: Status is " + output26State + "</p>");
+            // If the output26State is off, it displays the ON button       
+            if (output26State=="off") {
+              client.println("<p><a href=\"/0/on\"><button class=\"button\">PLAY</button></a></p>");
+            } else {
+              client.println("<p><a href=\"/0/off\"><button class=\"button button2\">STOP</button></a></p>");
+            } 
+               
+            client.println("</body></html>");
+            
+            // The HTTP response ends with another blank line
+            client.println();
+            // Break out of the while loop
+            break;
+          } else { // if you got a newline, then clear currentLine
+            currentLine = "";
+          }
+        } else if (c != '\r') {  // if you got anything else but a carriage return character,
+          currentLine += c;      // add it to the end of the currentLine
+        }
+      }
+    }
+    // Clear the header variable
+    header = "";
+    // Close the connection
+    client.stop();
+    Serial.println("Client disconnected.");
+    Serial.println("");
 
-  WiFiClient client = server.available();
-  if (!client)
-  {
-    return;
-  }
-  Serial.println("Waiting for new client...");
 
-  while(!client.available())
-  {
-    delay(1);
-  }
-
-  String request = client.readStringUntil('\r');
-  Serial.println(request);
-  client.flush();
-
-// The trip pin is assigned to low always on start of the program. 
-// Change its binary status by digital writing it to HIGH (1) when 
-// the status from the client availability string from the above if loop changed to ON.
-
-int value = LOW;
-  if(request.indexOf("/trip=ON") != -1)
-  {
-    digitalWrite(trip, HIGH); // Turn trip pin ON.
-    value = HIGH;
-  }
-  if(request.indexOf("/trip=OFF") != -1)
-  {
-    digitalWrite(trip, LOW); // Turn trip pin OFF.
-    value = LOW;
-
-// Create HTML webpage with ON and OFF buttons to control the status of the trip pin: //
-
-client.println("HTTP/1.1 200 OK"); //
-  client.println("Content-Type: text/html");
-  client.println("");
-  client.println("<!DOCTYPE HTML>");
-  client.println("<html>");
-  client.print(" Control Trip Pin: ");
-
-  if(value == HIGH)
-  {
-    client.print("ON");
-  }
-  else
-  {
-    client.print("OFF");
-  }
-  client.println("<br><br>");
-  client.println("<a href=\"/trip=ON\"\"><button>ON</button></a>");
-  client.println("<a href=\"/trip=OFF\"\"><button>OFF</button></a><br />");
-  client.println("</html>");
-
-  delay(1);
-  Serial.println("Client disonnected.");
-  Serial.println("");
-}
-
-}
+ }
+ }
