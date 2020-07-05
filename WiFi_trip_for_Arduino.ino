@@ -19,8 +19,8 @@ unsigned long previousTime = 0;
 const long timeoutTime = 2000;
 String header; // Variable to store the HTTP request.
 
-char ssid[] = "Guzman";
-char password[] = "M4rk_H3rsam";
+char ssid[] = "****";
+char password[] = "*****";
 
 // Note: GPIO pins on the ESP2866 can draw a maximum current of 12 mA. //
 
