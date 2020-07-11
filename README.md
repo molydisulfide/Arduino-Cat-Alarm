@@ -59,8 +59,8 @@ _______
 |:------:|:------:|
 |V<sub>in</sub> pin on ESP| 5 V rail from Elegoo Power Supply Module|
 |GND pin on ESP| GND rail from Elegoo Power Supply Module|
-|V<sub>in</sub> pin on Arduino| 5 V rail from Elegoo Power Supply Module|
-|GND pin on Arduino| GND rail from Elegoo Power Supply Module|
+| Arduino DC jack | 9 V Li ion battery|
+
 
 ## Visual Routing Schematic:
 
