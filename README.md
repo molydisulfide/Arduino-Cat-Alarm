@@ -53,7 +53,7 @@ _______
 |:------:|:-------:|
 |#3 | #D3 |
 
-## Power Supply (tbc.):
+## Power Supply:
 
 | **Boards** | **Power Supply Module on Breadboard**|
 |:------:|:------:|
