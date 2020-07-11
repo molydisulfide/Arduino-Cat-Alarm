@@ -2,7 +2,7 @@
 
 This is a homemade IoT distraction system for my cat Louie. 
 
-Louie is a real pest in the morning when he hasn't yet had his breakfast. This device plays the sound of birds chirping in another room when an HTML button is pressed on a website hosted by an ESP8266 server, which trips an Arduino set to play an audio file off an SD card. 
+Louie is a real pest in the morning when he hasn't yet had his breakfast. This device plays the sound of birds chirping in another room when an HTML button is pressed on a website hosted by an ESP8266 server, which trips an Arduino set to play an audio file off an SD card. This distracts Louie enough for a quick snooze.
 
 Both the Arduino and the ESP8266 board are powered with a breadboard-compatible power supply module connected to either a battery or power bank, allowing the device to be placed in any part of the home.
 
