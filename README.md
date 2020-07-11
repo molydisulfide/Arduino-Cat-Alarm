@@ -2,9 +2,9 @@
 
 This is a homemade IoT distraction system for my cat Louie. 
 
-Louie is a real pest in the morning if he hasn't yet had his breakfast. This device plays the sound of birds singing in another room when a button is pressed on a website hosted by an ESP8266 server which trips an Arduino playing the audio file off an SD card. 
+Louie is a real pest in the morning when he hasn't yet had his breakfast. This device plays the sound of birds chirping in another room when an HTML button is pressed on a website hosted by an ESP8266 server, which trips an Arduino set to play an audio file off an SD card. 
 
-Both the Arduino and the ESP8266 board are powered with a breadboard-compatible power supply module connected to either a battery or power bank, making the device fully wireless, and allowing it to be placed in arbitray parts of the home.
+Both the Arduino and the ESP8266 board are powered with a breadboard-compatible power supply module connected to either a battery or power bank, allowing the device to be placed in any part of the home.
 
 This repo contains:
 
@@ -45,7 +45,7 @@ _______
 | Positive input on speaker      | 10 <img src="https://render.githubusercontent.com/render/math?math=\Omega"> resistor           |
 | 10 <img src="https://render.githubusercontent.com/render/math?math=\Omega"> resistor           | Positive rail on breadboard    |
 
-*Note:* The BJT does get quite hot and the speaker is not terribly loud... good enough for a prototype, but for optimal performance need a better speaker/amplifier.
+*Note:* The BJT does get quite hot and the speaker is not very loud... good enough for a prototype, but for optimal performance we'd need a better speaker/amplifier.
 
 ## Arduino-ESP8266 Trip Wire:
 
